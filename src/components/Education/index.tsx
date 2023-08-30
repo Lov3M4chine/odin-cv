@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import InputField from 'components/Reusable/InputField'
-import DateInput from 'components/Reusable/DateInput'
+import DateInput from '../Reusable/DateInput'
+import SectionHeader from 'components/Reusable/SectionHeader'
 
 const Education: React.FC = () => {
   const [school, setSchool] = useState('')
@@ -8,33 +9,47 @@ const Education: React.FC = () => {
   const [startDate, setStartDate] = useState<Date | null>(null)
   const [endDate, setEndDate] = useState<Date | null>(null)
   const [schoolAddress, setSchoolAddress] = useState('')
+  const [showInputs, setShowInputs] = useState(true)
 
   return (
     <div className="p-4">
-      <h1 className="mb-4 text-xl">Education</h1>
-      <InputField
-        label="School"
-        value={school}
-        type="text"
-        placeholder="Arizona State University"
-        onChange={setSchool}
+      <SectionHeader
+        title="Education"
+        showContent={showInputs}
+        toggleContent={() => setShowInputs(!showInputs)}
       />
-      <InputField
-        label="Degree"
-        value={degree}
-        type="text"
-        placeholder="Computer Science"
-        onChange={setDegree}
-      />
-      <DateInput label="Start Date" value={startDate} onChange={setStartDate} />
-      <DateInput label="End Date" value={endDate} onChange={setEndDate} />
-      <InputField
-        label="School Address"
-        value={schoolAddress}
-        type="text"
-        placeholder="Phoenix, Arizona"
-        onChange={setSchoolAddress}
-      />
+
+      {showInputs && (
+        <>
+          <InputField
+            label="School"
+            value={school}
+            type="text"
+            placeholder="Arizona State University"
+            onChange={setSchool}
+          />
+          <InputField
+            label="Degree"
+            value={degree}
+            type="text"
+            placeholder="Computer Science"
+            onChange={setDegree}
+          />
+          <DateInput
+            label="Start Date"
+            value={startDate}
+            onChange={setStartDate}
+          />
+          <DateInput label="End Date" value={endDate} onChange={setEndDate} />
+          <InputField
+            label="School Address"
+            value={schoolAddress}
+            type="text"
+            placeholder="Phoenix, Arizona"
+            onChange={setSchoolAddress}
+          />
+        </>
+      )}
     </div>
   )
 }
