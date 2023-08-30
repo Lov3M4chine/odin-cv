@@ -1,16 +1,36 @@
 import React, { useState } from 'react'
 import InputField from '../Reusable/InputField'
 import SectionHeader from '../Reusable/SectionHeader'
+import Button from '../Reusable/Button'
+import { clearData, saveToLocalStorage } from 'utils/utilities'
 
 const GeneralInfo: React.FC = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [personalAddress, setPersonalAddress] = useState('')
+  const [name, setName] = useState(localStorage.getItem('name') || '')
+  const [email, setEmail] = useState(localStorage.getItem('email') || '')
+  const [phone, setPhone] = useState(localStorage.getItem('phone') || '')
+  const [personalAddress, setPersonalAddress] = useState(
+    localStorage.getItem('personalAddress') || ''
+  )
   const [showInputs, setShowInputs] = useState(true)
 
+  const handleSave = () => {
+    saveToLocalStorage({
+      name: name,
+      email: email,
+      phone: phone,
+      personalAddress: personalAddress
+    })
+  }
+
+  const handleClear = () => {
+    clearData(
+      ['name', 'email', 'phone', 'personalAddress'],
+      [setName, setEmail, setPhone, setPersonalAddress]
+    )
+  }
+
   return (
-    <div className="p-4">
+    <div className="rounded-lg bg-slate-400 p-4">
       <SectionHeader
         title="General Information"
         showContent={showInputs}
@@ -47,10 +67,12 @@ const GeneralInfo: React.FC = () => {
             placeholder="Phoenix, Arizona"
             onChange={setPersonalAddress}
           />
+          <div className="flex justify-between">
+            <Button label="Save" onClick={handleSave} />
+            <Button label="Clear" onClick={handleClear} />
+          </div>
         </>
       )}
-
-      {/* You can also add a 'Submit' button or other UI elements here. */}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 
 interface SectionHeaderProps {
   title: string
@@ -13,12 +14,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => (
   <div className="flex items-center justify-between">
     <h1 className="mb-4 text-xl">{title}</h1>
-    <button
-      onClick={toggleContent}
-      className="rounded bg-blue-500 px-3 py-1 text-white"
-    >
-      {showContent ? 'Hide' : 'Show'}
-    </button>
+    <Button label={showContent ? 'Hide' : 'Show'} onClick={toggleContent} />
   </div>
 )
 

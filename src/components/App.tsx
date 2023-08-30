@@ -5,8 +5,8 @@ import Experience from './Experience'
 
 const App: React.FC = () => {
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="mb-6 text-2xl">CV Resume Maker</h1>
+    <div className="container mx-auto flex flex-col gap-10 p-8">
+      <h1 className="mb-6 text-2xl text-slate-300">CV Resume Maker</h1>
       <GeneralInfo />
       <Education />
       <Experience />

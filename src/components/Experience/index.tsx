@@ -12,7 +12,7 @@ const Experience: React.FC = () => {
   const [showInputs, setShowInputs] = useState(true)
 
   return (
-    <div className="p-4">
+    <div className="rounded-lg bg-slate-400 p-4">
       <SectionHeader
         title="Experience"
         showContent={showInputs}
