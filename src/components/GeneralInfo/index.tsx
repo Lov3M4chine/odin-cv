@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import Name from './Name'
-import Email from './Email'
-import Phone from './Phone'
-import Location from '../Reusable/Location'
+import InputField from '../Reusable/InputField'
 
 const GeneralInfo: React.FC = () => {
   const [name, setName] = useState('')
@@ -13,12 +10,32 @@ const GeneralInfo: React.FC = () => {
   return (
     <div className="p-4">
       <h1 className="mb-4 text-xl">General Information</h1>
-      <Name value={name} onChange={setName} />
-      <Email value={email} onChange={setEmail} />
-      <Phone value={phone} onChange={setPhone} />
-      <Location
+      <InputField
+        label="Full Name"
+        value={name}
+        type="text"
+        placeholder="John Smith"
+        onChange={setName}
+      />
+      <InputField
+        label="Email"
+        value={email}
+        type="email"
+        placeholder="example@outlook.com"
+        onChange={setEmail}
+      />
+      <InputField
+        label="Phone Number"
+        value={phone}
+        type="tel"
+        placeholder="(555) 555-5555"
+        onChange={setPhone}
+      />
+      <InputField
         label="Address"
         value={personalAddress}
+        type="text"
+        placeholder="Phoenix, Arizona"
         onChange={setPersonalAddress}
       />
       {/* You can also add a 'Submit' button or other UI elements here. */}

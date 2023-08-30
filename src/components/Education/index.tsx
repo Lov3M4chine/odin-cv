@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import School from './School'
-import Degree from './Degree'
-import DateInput from '../Reusable/DateInput'
-import Location from '../Reusable/Location'
+import InputField from 'components/Reusable/InputField'
+import DateInput from 'components/Reusable/DateInput'
 
 const Education: React.FC = () => {
   const [school, setSchool] = useState('')
@@ -14,13 +12,27 @@ const Education: React.FC = () => {
   return (
     <div className="p-4">
       <h1 className="mb-4 text-xl">Education</h1>
-      <School value={school} onChange={setSchool} />
-      <Degree value={degree} onChange={setDegree} />
+      <InputField
+        label="School"
+        value={school}
+        type="text"
+        placeholder="Arizona State University"
+        onChange={setSchool}
+      />
+      <InputField
+        label="Degree"
+        value={degree}
+        type="text"
+        placeholder="Computer Science"
+        onChange={setDegree}
+      />
       <DateInput label="Start Date" value={startDate} onChange={setStartDate} />
       <DateInput label="End Date" value={endDate} onChange={setEndDate} />
-      <Location
+      <InputField
         label="School Address"
         value={schoolAddress}
+        type="text"
+        placeholder="Phoenix, Arizona"
         onChange={setSchoolAddress}
       />
     </div>
