@@ -33,8 +33,8 @@ const GeneralInfo: React.FC = () => {
     <div className="rounded-lg bg-slate-400 p-4">
       <SectionHeader
         title="General Information"
-        showContent={showInputs}
         toggleContent={() => setShowInputs(!showInputs)}
+        label={showInputs ? 'Hide' : 'Show'}
       />
 
       {showInputs && (
@@ -68,8 +68,16 @@ const GeneralInfo: React.FC = () => {
             onChange={setPersonalAddress}
           />
           <div className="flex justify-between">
-            <Button label="Save" onClick={handleSave} />
-            <Button label="Clear" onClick={handleClear} />
+            <Button
+              label="Save"
+              onClick={handleSave}
+              className="bg-green-500"
+            />
+            <Button
+              label="Clear"
+              onClick={handleClear}
+              className="bg-red-500"
+            />
           </div>
         </>
       )}

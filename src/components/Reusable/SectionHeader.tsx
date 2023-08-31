@@ -1,21 +1,25 @@
 import React from 'react'
-import Button from './Button'
+import Button from '../Reusable/Button'
 
 interface SectionHeaderProps {
   title: string
-  showContent: boolean
   toggleContent: () => void
+  label: string
+  className?: string
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
-  showContent,
-  toggleContent
-}) => (
-  <div className="flex items-center justify-between">
-    <h1 className="mb-4 text-xl">{title}</h1>
-    <Button label={showContent ? 'Hide' : 'Show'} onClick={toggleContent} />
-  </div>
-)
+  toggleContent,
+  label,
+  className
+}) => {
+  return (
+    <div className="flex items-center justify-between">
+      <h1 className="text-xl">{title}</h1>
+      <Button label={label} onClick={toggleContent} className={className} />
+    </div>
+  )
+}
 
 export default SectionHeader

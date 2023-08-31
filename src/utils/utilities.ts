@@ -13,16 +13,29 @@ export function saveToLocalStorage(data: StorageData) {
   alert('Data saved successfully!')
 }
 
+export function loadFromLocalStorage<T>(key: string, defaultValue: T): T {
+  const data = localStorage.getItem(key)
+  if (data) {
+    return JSON.parse(data)
+  }
+  return defaultValue
+}
+
 export function clearData(
   keys: string[],
-  stateSetters: Array<(value: string) => void>
+  setters: Array<((value: string) => void) | ((value: Date | null) => void)>
 ) {
-  keys.forEach((key) => {
-    localStorage.setItem(key, '')
-  })
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i]
+    const setter = setters[i]
 
-  stateSetters.forEach((setter) => {
-    setter('')
-  })
-  alert('Data cleared successfully!')
+    // Use local storage as an example, adapt as necessary
+    localStorage.removeItem(key)
+
+    if (key === 'startDate' || key === 'endDate') {
+      ;(setter as (value: Date | null) => void)(null)
+    } else {
+      ;(setter as (value: string) => void)('')
+    }
+  }
 }
