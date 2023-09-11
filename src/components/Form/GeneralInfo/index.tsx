@@ -71,14 +71,14 @@ const GeneralInfo: React.FC = () => {
           />
           <div className="flex justify-between">
             <Button
-              label="Save"
-              onClick={handleSave}
-              className="bg-green-500"
-            />
-            <Button
               label="Clear"
               onClick={handleClear}
               className="bg-red-500"
+            />
+            <Button
+              label="Save"
+              onClick={handleSave}
+              className="bg-green-500"
             />
           </div>
         </>

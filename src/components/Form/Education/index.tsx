@@ -176,14 +176,14 @@ const Education: React.FC = () => {
           />
           <div className="flex justify-between">
             <Button
-              label="Save"
-              onClick={handleSave}
-              className="m-4 ml-0 bg-green-500"
-            />
-            <Button
               label="Clear"
               onClick={handleClear}
               className="m-4 ml-0 bg-red-500"
+            />
+            <Button
+              label="Save"
+              onClick={handleSave}
+              className="m-4 ml-0 bg-green-500"
             />
           </div>
         </>
