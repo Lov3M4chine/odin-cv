@@ -1,3 +1,6 @@
+import html2canvas from 'html2canvas'
+import { jsPDF } from 'jspdf'
+
 export function classNames(...classes: unknown[]): string {
   return classes.filter(Boolean).join(' ')
 }
@@ -43,4 +46,24 @@ export function clearData(
 export function formatDate(isoString: string): string {
   const date = new Date(isoString)
   return `${date.getMonth() + 1}/${date.getFullYear()}`
+}
+
+export const downloadResumeAsPDF = (elementId: string): void => {
+  const input = document.getElementById(elementId)
+
+  if (!input) {
+    console.error(`Element with ID ${elementId} not found.`)
+    return
+  }
+
+  html2canvas(input).then((canvas) => {
+    const imgData = canvas.toDataURL('image/png')
+    const pdf = new jsPDF()
+
+    const imgWidth = 210 // Width of the PDF page, usually A4 size
+    const imgHeight = (canvas.height * imgWidth) / canvas.width // Adjusted height
+
+    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+    pdf.save('resume.pdf')
+  })
 }

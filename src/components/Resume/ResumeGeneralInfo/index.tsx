@@ -28,7 +28,9 @@ const ResumeGeneralInfo: React.FC = () => {
   return (
     <>
       <div className="bg-blue-500 p-6">
-        <div className="flex justify-center text-3xl">{generalInfo.name}</div>
+        <div className="flex justify-center pb-2 text-3xl">
+          {generalInfo.name}
+        </div>
         <div className="flex justify-center gap-3">
           <div>Email: {generalInfo.email}</div>
           <div>Tel: {generalInfo.phone}</div>

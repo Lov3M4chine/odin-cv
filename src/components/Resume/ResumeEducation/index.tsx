@@ -31,7 +31,7 @@ const ResumeEducation: React.FC = () => {
 
   return (
     <>
-      <div className="m-6 flex justify-center bg-slate-300 text-xl">
+      <div className="m-6 flex items-center justify-center bg-slate-300 text-xl">
         Education
       </div>
       {educations.map((education) => (
