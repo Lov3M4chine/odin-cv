@@ -9,7 +9,7 @@ import ResumeGeneralInfo from './Resume/ResumeGeneralInfo'
 const App: React.FC = () => {
   return (
     <div className="container mx-auto flex min-w-fit flex-col gap-10 bg-slate-300 p-8">
-      <h1 className="flex text-2xl">CV Resume Maker</h1>
+      <h1 className="flex justify-center text-2xl">CV Resume Maker</h1>
       <div className="flex">
         <div className="m-6 flex w-1/2 flex-col gap-3">
           <GeneralInfo />
