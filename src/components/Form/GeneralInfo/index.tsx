@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import InputField from '../Reusable/InputField'
-import SectionHeader from '../Reusable/SectionHeader'
-import Button from '../Reusable/Button'
+import InputField from 'components/Reusable/InputField'
+import SectionHeader from 'components/Reusable/SectionHeader'
+import Button from 'components/Reusable/Button'
 import { clearData, saveToLocalStorage } from 'utils/utilities'
 
 const GeneralInfo: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import InputField from 'components/Reusable/InputField'
-import DateInput from '../Reusable/DateInput'
+import DateInput from 'components/Reusable/DateInput'
 import SectionHeader from 'components/Reusable/SectionHeader'
 import Button from 'components/Reusable/Button'
 import {
