@@ -9,7 +9,7 @@ import {
 } from 'utils/utilities'
 import Button from 'components/Reusable/Button'
 
-interface ExperienceEntry {
+export interface ExperienceEntry {
   companyName: string
   positionTitle: string
   startDate: string
@@ -61,8 +61,10 @@ const Experience: React.FC = () => {
     const newExperience = {
       companyName: companyName,
       positionTitle: positionTitle,
-      startDate: startDate ? startDate.toISOString() : '',
-      endDate: endDate ? endDate.toISOString() : '',
+      startDate:
+        startDate && !isNaN(startDate.getTime()) ? startDate.toISOString() : '',
+      endDate:
+        endDate && !isNaN(endDate.getTime()) ? endDate.toISOString() : '',
       location: location,
       description: description
     }
@@ -80,6 +82,7 @@ const Experience: React.FC = () => {
     }
     setExperiences(updatedExperiences)
     saveToLocalStorage({ experiences: JSON.stringify(updatedExperiences) })
+    window.dispatchEvent(new Event('experienceUpdated'))
     setEditingIndex(null)
     handleClear()
     setShowInputs(false)
@@ -116,6 +119,7 @@ const Experience: React.FC = () => {
     existingExperiences.splice(index, 1)
     setExperiences(existingExperiences)
     saveToLocalStorage({ experiences: JSON.stringify(existingExperiences) })
+    window.dispatchEvent(new Event('experienceUpdated'))
   }
 
   return (

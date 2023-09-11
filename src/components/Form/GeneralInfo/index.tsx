@@ -20,6 +20,7 @@ const GeneralInfo: React.FC = () => {
       phone: phone,
       personalAddress: personalAddress
     })
+    window.dispatchEvent(new Event('generalInfoUpdated'))
   }
 
   const handleClear = () => {
@@ -27,6 +28,7 @@ const GeneralInfo: React.FC = () => {
       ['name', 'email', 'phone', 'personalAddress'],
       [setName, setEmail, setPhone, setPersonalAddress]
     )
+    window.dispatchEvent(new Event('generalInfoUpdated'))
   }
 
   return (

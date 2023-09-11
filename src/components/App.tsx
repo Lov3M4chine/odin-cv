@@ -2,7 +2,9 @@ import React from 'react'
 import GeneralInfo from './Form/GeneralInfo'
 import Education from './Form/Education'
 import Experience from './Form/Experience'
-import ResumeHeader from './Resume/ResumeHeader'
+import ResumeEducation from './Resume/ResumeEducation'
+import ResumeExperience from './Resume/ResumeExperience'
+import ResumeGeneralInfo from './Resume/ResumeGeneralInfo'
 
 const App: React.FC = () => {
   return (
@@ -15,7 +17,9 @@ const App: React.FC = () => {
           <Experience />
         </div>
         <div className="w-1/2 bg-white">
-          <ResumeHeader />
+          <ResumeGeneralInfo />
+          <ResumeEducation />
+          <ResumeExperience />
         </div>
       </div>
     </div>

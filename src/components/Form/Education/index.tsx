@@ -9,7 +9,7 @@ import {
   saveToLocalStorage
 } from 'utils/utilities'
 
-interface EducationEntry {
+export interface EducationEntry {
   school: string
   degree: string
   startDate: string
@@ -58,8 +58,11 @@ const Education: React.FC = () => {
     const newEducation = {
       school: school,
       degree: degree,
-      startDate: startDate ? startDate.toISOString() : '',
-      endDate: endDate ? endDate.toISOString() : '',
+      startDate:
+        startDate && !isNaN(startDate.getTime()) ? startDate.toISOString() : '',
+      endDate:
+        endDate && !isNaN(endDate.getTime()) ? endDate.toISOString() : '',
+
       schoolAddress: schoolAddress
     }
     let updatedEducations
@@ -76,6 +79,7 @@ const Education: React.FC = () => {
     }
     setEducations(updatedEducations)
     saveToLocalStorage({ educations: JSON.stringify(updatedEducations) })
+    window.dispatchEvent(new Event('educationUpdated'))
 
     handleClear()
     setShowInputs(false)
@@ -101,6 +105,7 @@ const Education: React.FC = () => {
     if (editingIndex === 0) {
       setEditingIndex(null)
     }
+    window.dispatchEvent(new Event('educationUpdated'))
   }
 
   return (

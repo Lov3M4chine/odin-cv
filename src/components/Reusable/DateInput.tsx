@@ -20,7 +20,11 @@ const DateInput: React.FC<DateInputProps> = ({ label, value, onChange }) => {
       <input
         id={inputId}
         type="date"
-        value={value ? value.toISOString().split('T')[0] : ''}
+        value={
+          value && !isNaN(value.getTime())
+            ? value.toISOString().split('T')[0]
+            : ''
+        }
         onChange={(e) => onChange(new Date(e.target.value))}
         className="mt-1 w-full rounded-md border p-2"
       />
