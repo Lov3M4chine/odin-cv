@@ -36,8 +36,17 @@ const Education: React.FC = () => {
     if (educationToEdit) {
       setSchool(educationToEdit.school)
       setDegree(educationToEdit.degree)
-      setStartDate(new Date(educationToEdit.startDate))
-      setEndDate(new Date(educationToEdit.endDate))
+      if (educationToEdit.startDate) {
+        setStartDate(new Date(educationToEdit.startDate))
+      } else {
+        setStartDate(null)
+      }
+
+      if (educationToEdit.endDate) {
+        setEndDate(new Date(educationToEdit.endDate))
+      } else {
+        setEndDate(null)
+      }
       setSchoolAddress(educationToEdit.schoolAddress)
       setEditingIndex(index)
     }

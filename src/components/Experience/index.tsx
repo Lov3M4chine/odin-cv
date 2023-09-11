@@ -38,8 +38,17 @@ const Experience: React.FC = () => {
     if (experienceToEdit) {
       setCompanyName(experienceToEdit.companyName)
       setPositionTitle(experienceToEdit.positionTitle)
-      setStartDate(new Date(experienceToEdit.startDate))
-      setEndDate(new Date(experienceToEdit.endDate))
+      if (experienceToEdit.startDate) {
+        setStartDate(new Date(experienceToEdit.startDate))
+      } else {
+        setStartDate(null)
+      }
+
+      if (experienceToEdit.endDate) {
+        setEndDate(new Date(experienceToEdit.endDate))
+      } else {
+        setEndDate(null)
+      }
       setLocation(experienceToEdit.location)
       setDescription(experienceToEdit.description)
       setEditingIndex(index)
@@ -70,7 +79,7 @@ const Experience: React.FC = () => {
       setEditingIndex(0)
     }
     setExperiences(updatedExperiences)
-    saveToLocalStorage({ educations: JSON.stringify(updatedExperiences) })
+    saveToLocalStorage({ experiences: JSON.stringify(updatedExperiences) })
     setEditingIndex(null)
     handleClear()
     setShowInputs(false)
@@ -106,7 +115,7 @@ const Experience: React.FC = () => {
     )
     existingExperiences.splice(index, 1)
     setExperiences(existingExperiences)
-    saveToLocalStorage({ educations: JSON.stringify(existingExperiences) })
+    saveToLocalStorage({ experiences: JSON.stringify(existingExperiences) })
   }
 
   return (
